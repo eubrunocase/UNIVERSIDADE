@@ -1,8 +1,7 @@
 package entities;
 
 public class Disciplina {                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                            //Last att: 12:58 pm  (21/11/2023)
-
+    //Last att: 12:58 pm  (21/11/2023)
     private String sigla;
     private String descricao;
     private long id;
@@ -49,7 +48,7 @@ public class Disciplina {                                  // Powered by: BRUNO 
 
 
     public String toString() {
-        return "entities.Disciplina{" +
+        return "Disciplina{" +
                 "sigla='" + sigla + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", id=" + id +

@@ -1,7 +1,7 @@
 package entities;
 
 public class Departamento {                                              // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                            //Last att: 12:58 pm  (21/11/2023)
+    //Last att: 12:58 pm  (21/11/2023)
     private long id;
     private String sigla;
     private String descricao;
@@ -51,7 +51,7 @@ public class Departamento {                                              // Powe
 
 
     public String toString() {
-        return "entities.Departamento{" +
+        return "Departamento{" +
                 "id=" + id +
                 ", sigla='" + sigla + '\'' +
                 ", descricao='" + descricao + '\'' +
@@ -59,3 +59,4 @@ public class Departamento {                                              // Powe
                 '}';
     }
 }
+

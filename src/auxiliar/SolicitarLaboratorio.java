@@ -1,7 +1,7 @@
 package auxiliar;
 
 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                            //Last att: 12:58 pm  (21/11/2023)
+//Last att: 12:58 pm  (21/11/2023)
 import java.util.List;
 
 public class SolicitarLaboratorio {

@@ -6,8 +6,8 @@ import entities.Laboratorio;
 import entities.Professor;
 
 import java.util.List;
-                                                                                 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                                //Last att: 12:58 pm  (21/11/2023)
+// Powered by: BRUNO CASÉ and ZAIRA DUTRA
+//Last att: 12:58 pm  (21/11/2023)
 public class Solicitacao {                 //ATRIBUTOS
     private int id;
     private Laboratorio laboratorio;
