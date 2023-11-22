@@ -1,3 +1,5 @@
+package auxiliar;
+
 import java.util.List;
 
 public class Reserva implements IReserva{                                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
@@ -61,7 +63,7 @@ public class Reserva implements IReserva{                                       
 
 
     public String toString() {
-        return "Reserva{" +
+        return "auxiliar.Reserva{" +
                 "id=" + id +
                 ", solicitacao=" + solicitacao +
                 ", situacao=" + situacao +

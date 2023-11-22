@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-                                                                            // Powered by: BRUNO CASÉ and ZAIRA DUTRA
+package auxiliar;
+
+// Powered by: BRUNO CASÉ and ZAIRA DUTRA
                                                                             //Last att: 12:58 pm  (21/11/2023)
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class SolicitarLaboratorio {
         if (validarSolicitacao(solicitacao)) {
             Reserva reserva = new Reserva(solicitacao);
             reservas.add(reserva);
-            System.out.println("Solicitação aprovada. Reserva efetuada com sucesso.");
+            System.out.println("Solicitação aprovada. auxiliar.Reserva efetuada com sucesso.");
         } else {
             System.out.println("Solicitação reprovada. Verifique os conflitos ou limite de reservas.");
         }

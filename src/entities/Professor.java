@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.List;
 public class Professor {                                              // Powered by: BRUNO CASÉ and ZAIRA DUTRA
                                                                         //Last att: 12:58 pm  (21/11/2023)
@@ -57,12 +59,12 @@ public class Professor {                                              // Powered
 
 
     public String toString() {
-        return "Professor{" +
+        return "entities.Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", status=" + status +
                 ", departamento=" + departamento +
-                ", Disciplina=" + Disciplina +
+                ", entities.Disciplina=" + Disciplina +
                 '}';
     }
 }

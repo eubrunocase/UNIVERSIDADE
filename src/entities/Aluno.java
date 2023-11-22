@@ -1,12 +1,13 @@
-public class Aluno {                                             // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                  //Last att: 12:58 pm  (21/11/2023)
+package entities;
+
+public class Aluno {
     private long id;
     private String nome;
-    private long matricula;
+    private String matricula;
 
     private boolean status;
 
-    public Aluno(long id, String nome, long matricula, boolean status) {
+    public Aluno(long id, String nome, String matricula, boolean status) {
         this.id = id;
         this.nome = nome;
         this.matricula = matricula;
@@ -29,11 +30,11 @@ public class Aluno {                                             // Powered by: 
         this.id = id;
     }
 
-    public long getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(long matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -49,7 +50,7 @@ public class Aluno {                                             // Powered by: 
 
 
     public String toString() {
-        return "Aluno{" +
+        return "Entities.entities.Aluno{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", matricula=" + matricula +

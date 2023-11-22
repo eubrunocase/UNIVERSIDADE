@@ -1,15 +1,17 @@
-public class Disciplina {                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                            //Last att: 12:58 pm  (21/11/2023)
+package entities;
 
+public class Departamento {                                              // Powered by: BRUNO CASÉ and ZAIRA DUTRA
+                                                                            //Last att: 12:58 pm  (21/11/2023)
+    private long id;
     private String sigla;
     private String descricao;
-    private long id;
     private boolean status;
 
-    public Disciplina(String sigla, String descricao, long id, boolean status) {
+
+    public Departamento(long id, String sigla, String descricao, boolean status) {
+        this.id = id;
         this.sigla = sigla;
         this.descricao = descricao;
-        this.id = id;
         this.status = status;
     }
 
@@ -17,7 +19,7 @@ public class Disciplina {                                  // Powered by: BRUNO 
         return status;
     }
 
-    public void setAtiva(boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -46,11 +48,13 @@ public class Disciplina {                                  // Powered by: BRUNO 
     }
 
 
+
+
     public String toString() {
-        return "Disciplina{" +
-                "sigla='" + sigla + '\'' +
+        return "entities.Departamento{" +
+                "id=" + id +
+                ", sigla='" + sigla + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", id=" + id +
                 ", status=" + status +
                 '}';
     }
