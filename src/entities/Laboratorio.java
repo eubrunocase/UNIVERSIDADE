@@ -1,3 +1,5 @@
+package entities;
+
 public class Laboratorio {                                // Powered by: BRUNO CASÉ and ZAIRA DUTRA
                                                                     //Last att: 12:58 pm  (21/11/2023)
     private int id;
@@ -45,7 +47,7 @@ public class Laboratorio {                                // Powered by: BRUNO C
         this.status = status;
     }
     public String toString() {                         // TO STRING
-        return "Laboratorio[id=" + id + ", descricao=" + descricao + ", capacidade=" + capacidade + ", status=" + status + "]";
+        return "entities.Laboratorio[id=" + id + ", descricao=" + descricao + ", capacidade=" + capacidade + ", status=" + status + "]";
     }
 }
 

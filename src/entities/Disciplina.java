@@ -1,15 +1,17 @@
-public class Departamento {                                              // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                            //Last att: 12:58 pm  (21/11/2023)
-    private long id;
+package entities;
+
+public class Disciplina {                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
+                                                            //Last att: 12:58 pm  (21/11/2023)
+
     private String sigla;
     private String descricao;
+    private long id;
     private boolean status;
 
-
-    public Departamento(long id, String sigla, String descricao, boolean status) {
-        this.id = id;
+    public Disciplina(String sigla, String descricao, long id, boolean status) {
         this.sigla = sigla;
         this.descricao = descricao;
+        this.id = id;
         this.status = status;
     }
 
@@ -17,7 +19,7 @@ public class Departamento {                                              // Powe
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setAtiva(boolean status) {
         this.status = status;
     }
 
@@ -46,13 +48,11 @@ public class Departamento {                                              // Powe
     }
 
 
-
-
     public String toString() {
-        return "Departamento{" +
-                "id=" + id +
-                ", sigla='" + sigla + '\'' +
+        return "entities.Disciplina{" +
+                "sigla='" + sigla + '\'' +
                 ", descricao='" + descricao + '\'' +
+                ", id=" + id +
                 ", status=" + status +
                 '}';
     }
