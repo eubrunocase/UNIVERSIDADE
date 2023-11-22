@@ -1,20 +1,23 @@
 package entities;
 
 import java.util.List;
+
 public class Professor {                                              // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-                                                                        //Last att: 12:58 pm  (21/11/2023)
+    //Last att: 12:58 pm  (21/11/2023)
     private long id;
     private String nome;                                               //ATRIBUTOS
     private boolean status;
     private Departamento departamento;
-    private List<Disciplina> Disciplina;
+    private List<Disciplina> disciplinas;
 
-    public Professor(boolean ativo, long id, String nome, Departamento departamento, Disciplina disciplina) {  //CONSTRUTOR
+
+
+    public Professor(boolean ativo, long id, String nome, Departamento departamento, List<Disciplina> disciplinas) {  //CONSTRUTOR
         this.status = ativo;
         this.id = id;
         this.nome = nome;
         this.departamento = departamento;
-        this.Disciplina = Disciplina;
+        this.disciplinas = disciplinas;
     }
 
     public Departamento getDepartamento() {                                     //METODOS ACESSORES E MODIFICADORES
@@ -24,13 +27,12 @@ public class Professor {                                              // Powered
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-
-    public List<Disciplina> getDisciplina() {
-        return Disciplina;
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
     }
 
-    public void setDisciplina(List<Disciplina> disciplina) {
-        Disciplina = disciplina;
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     public boolean isStatus() {
@@ -58,13 +60,14 @@ public class Professor {                                              // Powered
     }
 
 
+    @Override
     public String toString() {
-        return "entities.Professor{" +
+        return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", status=" + status +
                 ", departamento=" + departamento +
-                ", entities.Disciplina=" + Disciplina +
+                ", Disciplina=" + disciplinas +
                 '}';
     }
 }
