@@ -16,7 +16,7 @@ public class SolicitarLaboratorio {
         if (validarSolicitacao(solicitacao)) {
             Reserva reserva = new Reserva(solicitacao);
             reservas.add(reserva);
-            System.out.println("Solicitação aprovada. auxiliar.Reserva efetuada com sucesso.");
+            System.out.println("Solicitação aprovada. Reserva efetuada com sucesso.");
         } else {
             System.out.println("Solicitação reprovada. Verifique os conflitos ou limite de reservas.");
         }

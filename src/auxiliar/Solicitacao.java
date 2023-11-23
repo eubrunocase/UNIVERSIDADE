@@ -27,6 +27,10 @@ public class Solicitacao {                 //ATRIBUTOS
         this.tempo = tempo;
     }
 
+    public Solicitacao(){
+
+    };
+
     public List<Aluno> getAlunos() {                                //METODOS ACESSORES
         return alunos;
     }
@@ -85,7 +89,7 @@ public class Solicitacao {                 //ATRIBUTOS
 
 
     public String toString() {                                   // METODO TO STRING
-        return "auxiliar.Solicitacao{" +
+        return "sSolicitacao{" +
                 "id=" + id +
                 ", laboratorio=" + laboratorio +
                 ", professor=" + professor +

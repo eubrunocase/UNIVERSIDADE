@@ -8,16 +8,16 @@ public class Professor {                                              // Powered
     private String nome;                                               //ATRIBUTOS
     private boolean status;
     private Departamento departamento;
-    private List<Disciplina> disciplinas;
+    private List<Disciplina> pdisciplinas;
 
 
 
-    public Professor(boolean ativo, long id, String nome, Departamento departamento, List<Disciplina> disciplinas) {  //CONSTRUTOR
+    public Professor(boolean ativo, long id, String nome, Departamento departamento, List<Disciplina> pdisciplinas) {  //CONSTRUTOR
         this.status = ativo;
         this.id = id;
         this.nome = nome;
         this.departamento = departamento;
-        this.disciplinas = disciplinas;
+        this.pdisciplinas = pdisciplinas;
     }
 
     public Departamento getDepartamento() {                                     //METODOS ACESSORES E MODIFICADORES
@@ -27,12 +27,12 @@ public class Professor {                                              // Powered
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-    public List<Disciplina> getDisciplinas() {
-        return disciplinas;
+    public List<Disciplina> getPdisciplinas() {
+        return pdisciplinas;
     }
 
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
+    public void setPdisciplinas(List<Disciplina> pdisciplinas) {
+        this.pdisciplinas = pdisciplinas;
     }
 
     public boolean isStatus() {
@@ -67,7 +67,7 @@ public class Professor {                                              // Powered
                 ", nome='" + nome + '\'' +
                 ", status=" + status +
                 ", departamento=" + departamento +
-                ", Disciplina=" + disciplinas +
+                ", Disciplina=" + pdisciplinas +
                 '}';
     }
 }

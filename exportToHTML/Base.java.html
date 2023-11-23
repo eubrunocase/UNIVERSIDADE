@@ -24,14 +24,14 @@ application.Base.java</font>
     <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Laboratorio</span><span class="s2">&gt; </span><span class="s1">laboratorios</span><span class="s2">;</span>
     <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Departamento</span><span class="s2">&gt; </span><span class="s1">departamentos</span><span class="s2">;</span>
     <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Professor</span><span class="s2">&gt; </span><span class="s1">professores</span><span class="s2">;</span>
-    <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Disciplina</span><span class="s2">&gt; </span><span class="s1">disciplinas</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Disciplina</span><span class="s2">&gt; </span><span class="s1">pdisciplinas</span><span class="s2">;</span>
     <span class="s0">private </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Aluno</span><span class="s2">&gt; </span><span class="s1">alunos</span><span class="s2">;</span>
 
     <span class="s0">public </span><span class="s1">application.Base</span><span class="s2">() {</span>
         <span class="s1">laboratorios </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
         <span class="s1">departamentos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
         <span class="s1">professores </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
-        <span class="s1">disciplinas </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+        <span class="s1">pdisciplinas </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
         <span class="s1">alunos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
         <span class="s1">inicializarDados</span><span class="s2">();</span>
     <span class="s2">}</span>
@@ -46,7 +46,7 @@ application.Base.java</font>
         <span class="s0">return </span><span class="s1">professores</span><span class="s2">;</span>
     <span class="s2">}</span>
     <span class="s0">public </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Disciplina</span><span class="s2">&gt; </span><span class="s1">getDisciplinas</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">disciplinas</span><span class="s2">;</span>
+        <span class="s0">return </span><span class="s1">pdisciplinas</span><span class="s2">;</span>
     <span class="s2">}</span>
     <span class="s0">public </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">entities.Aluno</span><span class="s2">&gt; </span><span class="s1">getAlunos</span><span class="s2">() {</span>
         <span class="s0">return </span><span class="s1">alunos</span><span class="s2">;</span>

@@ -33,7 +33,7 @@ public class Base implements IBase {
 
         for (int i = 1; i <= QTDE_LABORATORIOS; i++) {
             int capacidade = (i == 1 || i == 10) ? 30 : (i >= 2 && i <= 7) ? 20 : 15;
-            laboratorios.add(new Laboratorio(i, "LAB" + i, capacidade, true));
+            laboratorios.add(new Laboratorio(i, "LAMI" + i, capacidade, true));
         }
         return laboratorios;
 
@@ -66,36 +66,36 @@ public class Base implements IBase {
         getDisciplinas();// trazendo todos os departamentos pra usar aqui
         getDepartamentos();// trazendo todas as disciplinas geral pra usar aqui
 
-        for (int i = 1; i <= QTDE_PROFESSORES; i++) {//Para cada professor gerado
+        for (int i = 1; i <= QTDE_PROFESSORES; i++) {//Para cada professor gerado...
 
             Departamento dep = (i >= 1 && i <= 10) ? departamentos.get(0) :// se estiver no primeiro intervalo vai ser do departamento de incice 0
                     (i >= 11 && i <= 14) ? departamentos.get(1) :// segue a mesma lógica com o departamento de indice 1
                             departamentos.get(2);// aqui de indice 2
 
-            ArrayList<Disciplina> dis = new ArrayList<Disciplina>();// criando uma lista de disciplinas do professor instanciado
+            ArrayList<Disciplina> pdisciplinas = new ArrayList<Disciplina>();// criando uma lista de disciplinas do professor instanciado
             if (i >= 1 && i <= 10) {// se estiver no intervalo recebe tais disciplinas
-                dis.add(disciplinas.get(0));
-                dis.add(disciplinas.get(5));
-                dis.add(disciplinas.get(3));
+                pdisciplinas.add(disciplinas.get(0));
+                pdisciplinas.add(disciplinas.get(5));
+                pdisciplinas.add(disciplinas.get(3));
             } else if (i >= 11 && i <= 14) {
-                dis.add(disciplinas.get(2));
-                dis.add(disciplinas.get(4));
-                dis.add(disciplinas.get(1));
-                dis.add(disciplinas.get(8));
+                pdisciplinas.add(disciplinas.get(2));
+                pdisciplinas.add(disciplinas.get(4));
+                pdisciplinas.add(disciplinas.get(1));
+                pdisciplinas.add(disciplinas.get(8));
             } else {
-                dis.add(disciplinas.get(10));
-                dis.add(disciplinas.get(9));
-                dis.add(disciplinas.get(7));
+                pdisciplinas.add(disciplinas.get(10));
+                pdisciplinas.add(disciplinas.get(9));
+                pdisciplinas.add(disciplinas.get(7));
             }
 
-            Professor prof = new Professor(true, i+0, "Professor",dep, dis);
+            Professor prof = new Professor(true, i+0, "Professor"+i,dep, pdisciplinas);
             professores.add(prof);
         }
         return professores;
     }
 
 
-    public List<Aluno> getAlunos(int qtde, int inicio) {
+    public List<Aluno> getAlunos(int qtde, int inicio) { // não entendi ainda a necessidade de usar o parametro inicio
         for (int i=0; i<qtde; i++)
             alunos.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
         return alunos;
