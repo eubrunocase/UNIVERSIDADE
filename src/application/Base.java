@@ -49,16 +49,16 @@ public class Base implements IBase {
 
 
     public List<Disciplina> getDisciplinas() {
-        disciplinas.add(new Disciplina("(BES005)","LÓGICA DE PROGRAMAÇÃO E ALGORITMOS", 1, true));
-        disciplinas.add(new Disciplina("(BES006)","ESTRUTURA DE DADOS", 2,true));
-        disciplinas.add(new Disciplina("(BES008)","PROGRAMAÇÃO ORIENTADA A OBJETOS", 3, true));
-        disciplinas.add(new Disciplina("(BES011)","BANCOS DE DADOS", 4, true));
-        disciplinas.add(new Disciplina("(BES012)","ENGENHARIA DE REQUISITOS", 5, true));
-        disciplinas.add(new Disciplina("(BES020)","PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS", 6, true));
-        disciplinas.add(new Disciplina("(BES026)","SISTEMAS DISTRIBUÍDOS", 7, true));
-        disciplinas.add(new Disciplina("(BES038)","INTELIGÊNCIA ARTIFICIAL", 8, true));
-        disciplinas.add(new Disciplina("(BES049)","PROGRAMAÇÃO WEB", 9, true));
-        disciplinas.add(new Disciplina("(BES048)","PROGRAMAÇÃO FRONT END", 10, true));
+        disciplinas.add(new Disciplina("BES005","LÓGICA DE PROGRAMAÇÃO E ALGORITMOS", 1, true));
+        disciplinas.add(new Disciplina("BES006","ESTRUTURA DE DADOS", 2,true));
+        disciplinas.add(new Disciplina("BES008","PROGRAMAÇÃO ORIENTADA A OBJETOS", 3, true));
+        disciplinas.add(new Disciplina("BES011","BANCOS DE DADOS", 4, true));
+        disciplinas.add(new Disciplina("BES012","ENGENHARIA DE REQUISITOS", 5, true));
+        disciplinas.add(new Disciplina("BES020","PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS", 6, true));
+        disciplinas.add(new Disciplina("BES026","SISTEMAS DISTRIBUÍDOS", 7, true));
+        disciplinas.add(new Disciplina("BES038","INTELIGÊNCIA ARTIFICIAL", 8, true));
+        disciplinas.add(new Disciplina("BES049","PROGRAMAÇÃO WEB", 9, true));
+        disciplinas.add(new Disciplina("BES048","PROGRAMAÇÃO FRONT END", 10, true));
         return disciplinas;
     }
 
@@ -95,7 +95,7 @@ public class Base implements IBase {
     }
 
 
-    public List<Aluno> getAlunos(int qtde, int inicio) { // não entendi ainda a necessidade de usar o parametro inicio
+    public List<Aluno> getAlunos(int qtde) { // não entendi ainda a necessidade de usar o parametro inicio
         for (int i=0; i<qtde; i++)
             alunos.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
         return alunos;

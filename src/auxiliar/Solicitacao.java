@@ -1,10 +1,9 @@
 package auxiliar;
 
-import entities.Aluno;
-import entities.Disciplina;
-import entities.Laboratorio;
-import entities.Professor;
+import application.Base;
+import entities.*;
 
+import java.util.Date;
 import java.util.List;
 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
 //Last att: 12:58 pm  (21/11/2023)
@@ -14,10 +13,13 @@ public class Solicitacao {                 //ATRIBUTOS
     private Professor professor;
     private Disciplina disciplina;
     private List<Aluno> alunos;
-    private String data;
+    private Date data;
+
+
+    private Date horario;
     private int tempo;
 
-    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Aluno aluno, String data, int tempo) {    //CONSTRUTOR
+    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Aluno aluno, Date data, int tempo) {    //CONSTRUTOR
         this.id = id;
         this.laboratorio = laboratorio;
         this.professor = professor;
@@ -29,7 +31,16 @@ public class Solicitacao {                 //ATRIBUTOS
 
     public Solicitacao(){
 
-    };
+    }
+
+
+    public Date getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Date horario) {
+        this.horario = horario;
+    }
 
     public List<Aluno> getAlunos() {                                //METODOS ACESSORES
         return alunos;
@@ -39,11 +50,11 @@ public class Solicitacao {                 //ATRIBUTOS
         this.alunos = alunos;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
