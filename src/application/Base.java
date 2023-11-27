@@ -95,12 +95,18 @@ public class Base implements IBase {
     }
 
 
-    public List<Aluno> getAlunos(int qtde) { // não entendi ainda a necessidade de usar o parametro inicio
-        for (int i=0; i<qtde; i++)
+    public List<Aluno> getAlunos(int qtde, int inicio) {
+        List<Aluno> turma = Alunos();
+        for (int i=inicio; i<qtde; i++)
             alunos.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
         return alunos;
     }
 
+    public List<Aluno> Alunos() {
+        for (int i=0; i<100; i++)
+            alunos.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
+        return alunos;
+    }
 
 
 }

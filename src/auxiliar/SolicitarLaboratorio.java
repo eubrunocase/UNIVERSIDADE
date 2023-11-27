@@ -12,7 +12,10 @@ public class SolicitarLaboratorio {
     }
 
 
-    public void solicitarLaboratorio(Solicitacao solicitacao) {
+ /*   public void solicitarLaboratorio() {
+        // Colocar aqui praticamente tudo que tá no main
+
+
         if (validarSolicitacao(solicitacao)) {
             Reserva reserva = new Reserva(solicitacao);
             reservas.add(reserva);
@@ -23,5 +26,5 @@ public class SolicitarLaboratorio {
     }
     private boolean validarSolicitacao(Solicitacao solicitacao) {
         return true;
-    }
+    }*/
 }

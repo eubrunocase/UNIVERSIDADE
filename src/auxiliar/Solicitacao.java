@@ -5,6 +5,8 @@ import entities.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
 //Last att: 12:58 pm  (21/11/2023)
 public class Solicitacao {                 //ATRIBUTOS
@@ -12,7 +14,7 @@ public class Solicitacao {                 //ATRIBUTOS
     private Laboratorio laboratorio;
     private Professor professor;
     private Disciplina disciplina;
-    private List<Aluno> alunos;
+    private Set<Aluno> alunos;
     private Date data;
 
 
@@ -42,11 +44,11 @@ public class Solicitacao {                 //ATRIBUTOS
         this.horario = horario;
     }
 
-    public List<Aluno> getAlunos() {                                //METODOS ACESSORES
+    public Set<Aluno> getAlunos() {                                //METODOS ACESSORES
         return alunos;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
+    public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
     }
 
@@ -100,7 +102,7 @@ public class Solicitacao {                 //ATRIBUTOS
 
 
     public String toString() {                                   // METODO TO STRING
-        return "sSolicitacao{" +
+        return "Solicitacao{" +
                 "id=" + id +
                 ", laboratorio=" + laboratorio +
                 ", professor=" + professor +

@@ -4,13 +4,10 @@ import auxiliar.Solicitacao;
 import auxiliar.SolicitarLaboratorio;
 import entities.*;
 
-import java.util.List;                                                           // FALTA FAZER OS TRY CATCH, IMPRIMIR OS ALUNOS E RESOLVER ALGUNS DETALHES
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Execucao {                                                        // Powered by: BRUNO CASÉ and ZAIRA DUTRA
@@ -42,7 +39,12 @@ public class Execucao {                                                        /
                     }
                 }
                 System.out.println(solicitacao.getLaboratorio());
-                List<Aluno> alunos = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade());
+            System.out.println("Digite o numero de id do o aluno de onde a lista de alunos vai começar:");
+            int alnId = ler.nextInt();
+                List<Aluno> alunos = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade(),alnId);
+                Set<Aluno> turma = new HashSet<>(alunos);
+                solicitacao.setAlunos(turma);
+                System.out.println(turma);
 
             System.out.println("Informe o nome do professor responsável:");// atribuir a solicitaçao, o professor correspondente ao nome informado
             String prof = ler.next();
