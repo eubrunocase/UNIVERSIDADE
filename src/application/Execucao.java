@@ -41,10 +41,10 @@ public class Execucao {                                                        /
                 System.out.println(solicitacao.getLaboratorio());
             System.out.println("Digite o numero de id do o aluno de onde a lista de alunos vai começar:");
             int alnId = ler.nextInt();
-                List<Aluno> alunos = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade(),alnId);
-                Set<Aluno> turma = new HashSet<>(alunos);
-                solicitacao.setAlunos(turma);
-                System.out.println(turma);
+                List<Aluno> turma = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade(),alnId);
+                Set<Aluno> turma1 = new HashSet<>(turma);
+                solicitacao.setAlunos(turma1);
+                System.out.println(turma1);
 
             System.out.println("Informe o nome do professor responsável:");// atribuir a solicitaçao, o professor correspondente ao nome informado
             String prof = ler.next();
@@ -67,7 +67,7 @@ public class Execucao {                                                        /
                 }
             }
             System.out.println("Lista de alunos:");
-            System.out.println(alunos);
+            System.out.println(turma1);
             System.out.println();
             System.out.print("Informe a data dd/mm/yy do uso do laboratorio:" );
             String dataString = ler.next();

@@ -96,9 +96,10 @@ public class Base implements IBase {
 
 
     public List<Aluno> getAlunos(int qtde, int inicio) {
-        List<Aluno> turma = Alunos();
+        List<Aluno> alunos = Alunos();
+        List<Aluno> turma = new ArrayList<Aluno>();
         for (int i=inicio; i<qtde; i++)
-            alunos.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
+            turma.add(new Aluno(i+1,"Aluno"+(i+1), "202320" + i, true));
         return alunos;
     }
 
