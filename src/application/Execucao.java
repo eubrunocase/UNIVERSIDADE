@@ -1,5 +1,7 @@
 package application;
 
+import auxiliar.Reserva;
+import auxiliar.SolicitarLaboratorio;
 import entities.Departamento;
 import entities.Disciplina;
 import entities.Laboratorio;
@@ -9,24 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Execucao {                                                        // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-    //Last att: 12:58 pm  (21/11/2023)
+
     public static void main(String[] args) {
         //fazendo testes por enquanto
 
-        Scanner ler = new Scanner(System.in);
         Base bd = new Base();
-        List<Laboratorio> laboratorios = bd.getLaboratorios();
-        List<Disciplina> disciplinas = bd.getDisciplinas();
-        List<Departamento> departamentos = bd.getDepartamentos();
-        List<Professor> professores = bd.getProfessores();
-        System.out.println(disciplinas);
-        System.out.println();
-        System.out.println(departamentos);
-        System.out.println();
-        System.out.println(laboratorios);
-        System.out.println();
-        System.out.println(professores);
-
+        SolicitarLaboratorio solicitacao = new SolicitarLaboratorio(bd);
+        solicitacao.solicitarLaboratorio();
 
 
 

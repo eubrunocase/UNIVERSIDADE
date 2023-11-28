@@ -7,7 +7,7 @@ import auxiliar.Solicitacao;
 import java.util.List;
 
 public class Reserva implements IReserva {                                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
-    //Last att: 12:58 pm  (21/11/2023)
+
     private int id;
     private Solicitacao solicitacao;
     private SituacaoReserva situacao;
