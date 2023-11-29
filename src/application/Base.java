@@ -1,13 +1,18 @@
 package application;
 
+import db.DB;
+import db.DbException;
 import entities.*;
 import application.IBase;
 
 
+import java.sql.Connection;
 import java.util.*;
 import java.util.List;
 import java.util.Random;
-
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 //Last att: 12:58 pm  (21/11/2023)
 public class Base implements IBase {
     private List<Laboratorio> laboratorios;
@@ -20,27 +25,49 @@ public class Base implements IBase {
     private final int QTDE_DEPARTAMENTOS = 3;
     private final int QTDE_LABORATORIOS= 15;
 
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+
+
     public Base() {
         laboratorios = new ArrayList<>();
         departamentos = new ArrayList<>();
         professores = new ArrayList<>();
         disciplinas = new ArrayList<>();
         alunos = new ArrayList<>();
+
+
     }
 
     public List<Laboratorio> getLaboratorios() {
-
-
-        for (int i = 1; i <= QTDE_LABORATORIOS; i++) {
-            int capacidade = (i == 1 || i == 10) ? 30 : (i >= 2 && i <= 7) ? 20 : 15;
-            laboratorios.add(new Laboratorio(i, "LAMI" + i, capacidade, true));
+        Connection conn = DB.getConnection();
+        String sql = "INSERT INTO universidade.laboratorio (descricao, capacidade, disponivel) VALUES (?, ?, ?)";
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            for (int i = 1; i <= QTDE_LABORATORIOS; i++) {
+                int capacidade = (i == 1 || i == 10) ? 30 : (i >= 2 && i <= 7) ? 20 : 15;
+                preparedStatement.setString(1, "LAMI" + i);
+                preparedStatement.setInt(2, capacidade);
+                preparedStatement.setBoolean(3, true);
+                preparedStatement.executeUpdate();
+            }
+            System.out.println("Tabela de laboratoios criada com sucesso");
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
         }
-        return laboratorios;
-
+        return null;
     }
 
 
-    public List<Departamento> getDepartamentos() {
+/*        for (int i = 1; i <= QTDE_LABORATORIOS; i++) {
+            int capacidade = (i == 1 || i == 10) ? 30 : (i >= 2 && i <= 7) ? 20 : 15;
+            laboratorios.add(new Laboratorio(i, "LAMI" + i, capacidade, true));
+        }
+        return laboratorios; */
+
+
+
+        public List<Departamento> getDepartamentos() {
         departamentos.add(new Departamento(1, "ES", "Engenharia de Software", true));
         departamentos.add(new Departamento(2, "CAD", "Computação de Alto Desempenho", true));
         departamentos.add(new Departamento(3, "IC", "Infraestrutura Computacional", true));
@@ -111,3 +138,4 @@ public class Base implements IBase {
 
 
 }
+

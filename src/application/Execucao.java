@@ -2,17 +2,30 @@ package application;
 
 import auxiliar.Solicitacao;
 import auxiliar.SolicitarLaboratorio;
+import db.DB;
 import entities.*;
 
+import java.sql.*;
 import java.util.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Execucao {                                                        // Powered by: BRUNO CASÉ and ZAIRA DUTRA
     //Last att: 12:58 pm  (21/11/2023)
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, SQLException {
+
+
+
+
+
+
+
+
+
+
         Base bd = new Base();
         List<Laboratorio> laboratorios = bd.getLaboratorios();
         List<Disciplina> disciplinas = bd.getDisciplinas();
