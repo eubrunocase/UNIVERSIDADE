@@ -1,12 +1,9 @@
 package auxiliar;
 
-import application.Base;
 import entities.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
 //Last att: 12:58 pm  (21/11/2023)
 public class Solicitacao {                 //ATRIBUTOS
@@ -14,7 +11,7 @@ public class Solicitacao {                 //ATRIBUTOS
     private Laboratorio laboratorio;
     private Professor professor;
     private Disciplina disciplina;
-    private Set<Aluno> alunos;
+    private List<Aluno> alunos;
     private Date data;
 
 
@@ -44,11 +41,11 @@ public class Solicitacao {                 //ATRIBUTOS
         this.horario = horario;
     }
 
-    public Set<Aluno> getAlunos() {                                //METODOS ACESSORES
+    public List<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
         return alunos;
     }
 
-    public void setAlunos(Set<Aluno> alunos) {
+    public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
 
@@ -102,7 +99,7 @@ public class Solicitacao {                 //ATRIBUTOS
 
 
     public String toString() {                                   // METODO TO STRING
-        return "Solicitacao{" +
+        return "sSolicitacao{" +
                 "id=" + id +
                 ", laboratorio=" + laboratorio +
                 ", professor=" + professor +
