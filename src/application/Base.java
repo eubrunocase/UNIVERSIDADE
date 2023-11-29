@@ -101,6 +101,12 @@ public class Base implements IBase {
         return alunos;
     }
 
+    public void BasePrint () {
+        System.out.println("Disciplinas: " + getDisciplinas());
+        System.out.println("Professores: " + getProfessores());
+        System.out.println("Departamentos: " + getDepartamentos());
+    }
+
 
 
 }

@@ -1,6 +1,5 @@
 package auxiliar;
 
-import application.Base;
 import entities.*;
 
 import java.util.Date;
@@ -42,7 +41,7 @@ public class Solicitacao {                 //ATRIBUTOS
         this.horario = horario;
     }
 
-    public List<Aluno> getAlunos() {                                //METODOS ACESSORES
+    public List<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
         return alunos;
     }
 
