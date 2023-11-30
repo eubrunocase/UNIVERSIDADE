@@ -1,11 +1,16 @@
 package auxiliar;
 
+import application.Base;
 import entities.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAmount;
+import java.util.*;
 
 public class SolicitarLaboratorio {
     private Scanner scanner;
@@ -15,16 +20,20 @@ public class SolicitarLaboratorio {
     private List<Professor> professores;
 
 
-    public SolicitarLaboratorio(Scanner scanner, List<Laboratorio> laboratorios, List<Disciplina> disciplinas, List<Departamento> departamentos, List<Professor> professores) {
+
+
+    public   SolicitarLaboratorio(Scanner scanner, List<Laboratorio> laboratorios, List<Disciplina> disciplinas, List<Departamento> departamentos, List<Professor> professores) {
         this.scanner = scanner;
         this.laboratorios = laboratorios;
         this.disciplinas = disciplinas;
         this.departamentos = departamentos;
         this.professores = professores;
+
     }
+
     public void solicitarLab() throws ParseException {
         Solicitacao solicitacao = new Solicitacao();
-
+        //Definindo o laboratorio
         System.out.print("Informe qual laboratório deseja reservar:");
         String lami = scanner.next();
         for (Laboratorio lab : laboratorios) {
@@ -32,7 +41,7 @@ public class SolicitarLaboratorio {
                 solicitacao.setLaboratorio(lab);
             }
         }
-
+        //Definindo o professor
         System.out.println("Informe o nome do professor responsável:");
         String prof = scanner.next();
         for (Professor professor : professores) {
@@ -40,7 +49,7 @@ public class SolicitarLaboratorio {
                 solicitacao.setProfessor(professor);
             }
         }
-
+        //Definindo a disciplina
         System.out.println("Informe a sigla da disciplina:");
         String sigla = scanner.next();
         for (Disciplina dis : solicitacao.getProfessor().getPdisciplinas()) {
@@ -49,43 +58,58 @@ public class SolicitarLaboratorio {
                 System.out.println(dis);
             }
         }
+        //Definindo a turma
+        System.out.println("Informe a partir de qual posicao (id) na lista de alunos você quer a lista :");
+        int inicio = scanner.nextInt();
+        Base bd = new Base();
+        List<Aluno> alunos = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade(), inicio);
+        Set<Aluno> turma = new HashSet<Aluno>(alunos);
+        System.out.println(turma);
 
-        System.out.println("Lista de alunos:");
-        Solicitacao bd = null;
-        List<Aluno> alunos = bd.getAlunos(solicitacao.getLaboratorio().getCapacidade());
-        System.out.println(alunos);
 
+        // Definindo data
         System.out.print("Informe a data dd/MM/yy do uso do laboratório:");
         String dataString = scanner.next();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         try {
-            Date data = dateFormat.parse(dataString);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+            LocalDate data = LocalDate.parse(dataString, formatter);
             solicitacao.setData(data);
             System.out.println("Data definida com sucesso: " + data);
-        } catch (ParseException e) {
+        } catch (DateTimeParseException e) {
             System.out.println("Formato de data inválido. Certifique-se de usar o formato dd/MM/yy.");
         }
 
+
+        // Definindo horario
         System.out.print("Informe o horário (HH:mm) inicial de uso do laboratório: ");
         String horarioString = scanner.next();
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
         try {
-            Date horario = timeFormat.parse(horarioString);
+            LocalTime horario = LocalTime.parse(horarioString, timeFormatter);
             solicitacao.setHorario(horario);
-        } catch (ParseException e) {
+            System.out.println("Horário definido com sucesso: " + horario);
+        } catch (DateTimeParseException e) {
             System.out.println("Formato de horário inválido. Certifique-se de usar o formato HH:mm.");
         }
 
+
         System.out.println("Informe quanto por quanto tempo (minutos) deseja reservar o laboratório:");
-        int tempo = scanner.nextInt();
-        solicitacao.setTempo(tempo);
+
+        long minutos = scanner.nextLong();
+
+        // Criar uma Duration a partir dos segundos inseridos pelo usuário
+        Duration duration = Duration.ofMinutes(minutos);
+        solicitacao.setTempo(duration);
 
         System.out.println("Aqui está a revisão da sua solicitação:");
         System.out.println(solicitacao);
         System.out.println("Deseja prosseguir com a reserva? (sim/nao)");
-        String res = scanner.next();
+        
+
+        System.out.println("Atendimento finalizado");
 
 
     }
 
-}
+    }

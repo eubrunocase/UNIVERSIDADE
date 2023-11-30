@@ -1,43 +1,51 @@
 package auxiliar;
 
-import auxiliar.IReserva;
-import auxiliar.SituacaoReserva;
-import auxiliar.Solicitacao;
-
+import java.time.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva implements IReserva {                                                  // Powered by: BRUNO CASÉ and ZAIRA DUTRA
     //Last att: 12:58 pm  (21/11/2023)
     private int id;
     private Solicitacao solicitacao;
-    private SituacaoReserva situacao;
-    private String diaDaReserva;
-    private int duracao;
 
-    public Reserva(int id, Solicitacao solicitacao, SituacaoReserva situacao, String diaDaReserva, int duracao) {
-        this.id = id;
-        this.solicitacao = solicitacao;
-        this.situacao = situacao;
-        this.diaDaReserva = diaDaReserva;
+    private SituacaoReserva situacaoReserva;
+    private LocalDate diaDaReserva;
+    private LocalTime horarioDaReserva;
+    private Duration duracao;
+
+
+    public Reserva(Solicitacao solicitacao, Boolean valido,LocalDate data, LocalTime horario, Duration duracao) {
+
+        this.id = solicitacao.getId();
+        if (valido) {
+            this.situacaoReserva = SituacaoReserva.APROVADA;
+        } else {
+            this.situacaoReserva = SituacaoReserva.REPROVADA;
+        }
+        this.diaDaReserva = data;
+        this.horarioDaReserva = horario;
         this.duracao = duracao;
     }
 
-    public Reserva(Solicitacao solicitacao) {
-    }
 
-    public String getDiaDaReserva() {
+
+
+
+
+    public LocalDate getDiaDaReserva() {
         return diaDaReserva;
     }
 
-    public void setDiaDaReserva(String diaDaReserva) {
+    public void setDiaDaReserva(LocalDate diaDaReserva) {
         this.diaDaReserva = diaDaReserva;
     }
 
-    public int getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(Duration duracao) {
         this.duracao = duracao;
     }
 
@@ -50,11 +58,11 @@ public class Reserva implements IReserva {                                      
     }
 
     public SituacaoReserva getSituacao() {
-        return situacao;
+        return situacaoReserva;
     }
 
-    public void setSituacao(SituacaoReserva situacao) {
-        this.situacao = situacao;
+    public void setSituacao(SituacaoReserva situacaoReserva) {
+        this.situacaoReserva= situacaoReserva;
     }
 
     public Solicitacao getSolicitacao() {
@@ -67,18 +75,16 @@ public class Reserva implements IReserva {                                      
 
 
     public String toString() {
-        return "auxiliar.Reserva{" +
+        return "Reserva{" +
                 "id=" + id +
                 ", solicitacao=" + solicitacao +
-                ", situacao=" + situacao +
+                ", situacao=" + situacaoReserva +
                 ", diaDaReserva='" + diaDaReserva + '\'' +
                 ", duracao=" + duracao +
                 '}';
     }
 
 
-    public List<Reserva> getReservas() {
-        return null;
-    }
+
 }
 

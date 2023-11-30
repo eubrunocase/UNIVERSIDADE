@@ -2,8 +2,10 @@ package auxiliar;
 
 import entities.*;
 
-import java.util.Date;
-import java.util.List;
+import java.time.*;
+import java.time.temporal.TemporalAmount;
+import java.util.Set;
+
 // Powered by: BRUNO CASÉ and ZAIRA DUTRA
 //Last att: 12:58 pm  (21/11/2023)
 public class Solicitacao {                 //ATRIBUTOS
@@ -11,14 +13,14 @@ public class Solicitacao {                 //ATRIBUTOS
     private Laboratorio laboratorio;
     private Professor professor;
     private Disciplina disciplina;
-    private List<Aluno> alunos;
-    private Date data;
+    private Set<Aluno> alunos;
+    private LocalDate data;
 
 
-    private Date horario;
-    private int tempo;
+    private LocalTime horario;
+    private Duration tempo;
 
-    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Aluno aluno, Date data, int tempo) {    //CONSTRUTOR
+    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Aluno aluno, LocalDate data, Duration tempo) {    //CONSTRUTOR
         this.id = id;
         this.laboratorio = laboratorio;
         this.professor = professor;
@@ -33,27 +35,27 @@ public class Solicitacao {                 //ATRIBUTOS
     }
 
 
-    public Date getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 
-    public List<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
+    public Set<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
         return alunos;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
+    public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -89,14 +91,20 @@ public class Solicitacao {                 //ATRIBUTOS
         this.professor = professor;
     }
 
-    public int getTempo() {
+    public Duration getTempo() {
         return tempo;
     }
 
-    public void setTempo(int tempo) {
+    public void setTempo(Duration tempo) {
         this.tempo = tempo;
     }
 
+    private String formatarDuracao(Duration duration) {
+        long horas = duration.toHours();
+        long minutos = duration.toMinutesPart();
+
+        return String.format("%d horas e %d minutos", horas, minutos);
+    }
 
     public String toString() {                                   // METODO TO STRING
         return "sSolicitacao{" +
@@ -106,7 +114,7 @@ public class Solicitacao {                 //ATRIBUTOS
                 ", disciplina=" + disciplina +
                 ", alunos=" + alunos +
                 ", data='" + data + '\'' +
-                ", tempo=" + tempo +
+                ", tempo=" + formatarDuracao(tempo) +
                 '}';
     }
 }
