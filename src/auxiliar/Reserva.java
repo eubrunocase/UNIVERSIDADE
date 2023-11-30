@@ -1,5 +1,8 @@
 package auxiliar;
 
+import entities.Disciplina;
+import entities.Professor;
+
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +13,17 @@ public class Reserva implements IReserva {                                      
     private Solicitacao solicitacao;
 
     private SituacaoReserva situacaoReserva;
-    private LocalDate diaDaReserva;
-    private LocalTime horarioDaReserva;
+    private LocalDateTime diaHoraReserva;
     private Duration duracao;
+    private Professor professor;
+    private Disciplina disciplina;
 
 
-    public Reserva(Solicitacao solicitacao, Boolean valido,LocalDate data, LocalTime horario, Duration duracao) {
+
+    private LocalDateTime dataLiberacao;
+
+
+    public Reserva(Solicitacao solicitacao, Boolean valido,LocalDateTime diaHora, Duration duracao, Professor professor, Disciplina disciplina, LocalDateTime dataLiberacao) {
 
         this.id = solicitacao.getId();
         if (valido) {
@@ -23,22 +31,31 @@ public class Reserva implements IReserva {                                      
         } else {
             this.situacaoReserva = SituacaoReserva.REPROVADA;
         }
-        this.diaDaReserva = data;
-        this.horarioDaReserva = horario;
+        this.diaHoraReserva = diaHora;
         this.duracao = duracao;
+        this.professor = professor;
+        this.disciplina = disciplina;
+        this.dataLiberacao = dataLiberacao;
+    }
+
+    @Override
+    public void Efetivar(Reserva reserva, List<Reserva> listaReservas) {
+        listaReservas.add(reserva);
     }
 
 
 
 
-
-
-    public LocalDate getDiaDaReserva() {
-        return diaDaReserva;
+    public LocalDateTime dataLiberacao() {
+        return dataLiberacao;
     }
 
-    public void setDiaDaReserva(LocalDate diaDaReserva) {
-        this.diaDaReserva = diaDaReserva;
+    public LocalDateTime getDiaHoraReserva() {
+        return diaHoraReserva;
+    }
+
+    public void setDiaHoraReserva(LocalDateTime diaHora) {
+        this.diaHoraReserva = diaHora;
     }
 
     public Duration getDuracao() {
@@ -79,7 +96,7 @@ public class Reserva implements IReserva {                                      
                 "id=" + id +
                 ", solicitacao=" + solicitacao +
                 ", situacao=" + situacaoReserva +
-                ", diaDaReserva='" + diaDaReserva + '\'' +
+                ", diaDaReserva='" + diaHoraReserva + '\'' +
                 ", duracao=" + duracao +
                 '}';
     }

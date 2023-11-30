@@ -1,15 +1,12 @@
 package application;
 
-import auxiliar.Reserva;
-import auxiliar.Solicitacao;
-import auxiliar.SolicitarLaboratorio;
+import auxiliar.*;
 import entities.*;
-import java.util.List;                                                           // FALTA FAZER OS TRY CATCH, IMPRIMIR OS ALUNOS E RESOLVER ALGUNS DETALHES
-import java.util.Objects;
-import java.util.Scanner;
+
+import java.time.*;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Execucao {
@@ -25,17 +22,26 @@ public class Execucao {
 
         Scanner ler = new Scanner(System.in);
 
+        System.out.println();
         System.out.println("Ola, seja bem-vindo(a) ao sistema de reserva de laboratórios da Ucsal");
         System.out.println();
         System.out.println("Para solicitar um laboratório digite 1");
-        System.out.println();
         System.out.println("Para exibir a base de dados da universidade digite 2");
         System.out.println("Para finalizar o atendimento digite 3");
         int resposta = ler.nextInt();
 
         if (resposta == 1) {
-            SolicitarLaboratorio solicitacaoLab = new SolicitarLaboratorio(ler, laboratorios, disciplinas, departamentos, professores);
-            solicitacaoLab.solicitarLab();
+            SolicitarLaboratorio solicitarLaboratorio = new SolicitarLaboratorio(ler, laboratorios, disciplinas, departamentos, professores);
+            Solicitacao solicitacao= solicitarLaboratorio.solicitarLab(); //cria uma solicitacao
+            Reservas reservas = new Reservas();
+            List<Reserva> listaReservas = reservas.getListaReservas();
+            ValidarSolicitacao validacao = new ValidarSolicitacao();
+            boolean aprovacao = validacao.checarConflito(solicitacao, listaReservas);
+            LocalDate hoje = LocalDate.now();
+            LocalDateTime hojeAgora = hoje.atTime(LocalTime.now());
+            Reserva novaReserva = new Reserva(solicitacao,aprovacao, solicitacao.getDataHora(), solicitacao.getTempo(), solicitacao.getProfessor(), solicitacao.getDisciplina(), hojeAgora);
+
+
 
 
         } else if (resposta == 2) {

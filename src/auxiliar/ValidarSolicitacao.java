@@ -1,67 +1,60 @@
 package auxiliar;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 public class ValidarSolicitacao {
     private boolean permitido = true;
-    public boolean isPermitido() {
-        return permitido;
-    }
 
 
-    public Boolean checarConflito(Solicitacao solicitacao, Reserva reserva){
 
+    public Boolean checarConflito(Solicitacao solicitacao, List<Reserva> reservas) {
+        for (Reserva reserva : reservas) {
             if (solicitacao.getProfessor() == reserva.getSolicitacao().getProfessor()) {
+                if (solicitacao.getDataHora().toLocalDate().equals(reserva.getSolicitacao().getDataHora().toLocalDate())) {
+                    // Se as datas da nova solicitação forem iguais às de uma reserva, verifique os horários
+                    LocalDateTime inicioNovaSolicitacao = solicitacao.getDataHora();
+                    LocalDateTime fimNovaSolicitacao = inicioNovaSolicitacao.plus(solicitacao.getTempo());
 
-                if (solicitacao.getData().equals(reserva.getSolicitacao().getData())) {// Se as data da nova solicitacao for igual a de uma reserva cheque:
+                    LocalDateTime inicioReservaExistente = reserva.getSolicitacao().getDataHora();
+                    LocalDateTime fimReservaExistente = inicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
 
-                    LocalTime horarioInicioNovaSolicitacao = solicitacao.getHorario();
-                    LocalTime horarioFimNovaSolicitacao = horarioInicioNovaSolicitacao.plus(solicitacao.getTempo());
-
-                    LocalTime horarioInicioReservaExistente = reserva.getSolicitacao().getHorario();
-                    LocalTime horarioFimReservaExistente = horarioInicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
-
-                    if (horarioFimNovaSolicitacao.isBefore(horarioInicioReservaExistente) ||// se os períodos que duram a reserva não entram em choque
-                            horarioInicioNovaSolicitacao.isAfter(horarioFimReservaExistente)) {
+                    if (fimNovaSolicitacao.isBefore(inicioReservaExistente) ||
+                            inicioNovaSolicitacao.isAfter(fimReservaExistente)) {
                         // Não há conflito, pode prosseguir com a nova solicitação
-
-                         permitido = true;
+                        permitido = true;
                     } else {
                         // Há conflito, a nova solicitação não pode ser agendada
-                         permitido = false;
+                        permitido = false;
                     }
                 }
             }
 
+            if (solicitacao.getLaboratorio() == reserva.getSolicitacao().getLaboratorio()) {
+                if (solicitacao.getDataHora().toLocalDate().equals(reserva.getSolicitacao().getDataHora().toLocalDate())) {
+                    // Se as datas da nova solicitação forem iguais às de uma reserva, verifique os horários
+                    LocalDateTime inicioNovaSolicitacao = solicitacao.getDataHora();
+                    LocalDateTime fimNovaSolicitacao = inicioNovaSolicitacao.plus(solicitacao.getTempo());
 
-            if (solicitacao.getLaboratorio() == reserva.getSolicitacao().getLaboratorio()) {// Se os laboratorios forem iguais cheque:
+                    LocalDateTime inicioReservaExistente = reserva.getSolicitacao().getDataHora();
+                    LocalDateTime fimReservaExistente = inicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
 
-                if (solicitacao.getProfessor() == reserva.getSolicitacao().getProfessor()) {
-
-                    if (solicitacao.getData().equals(reserva.getSolicitacao().getData())) {// Se as data da nova solicitacao for igual a de uma reserva cheque:
-
-                        LocalTime horarioInicioNovaSolicitacao = solicitacao.getHorario();
-                        LocalTime horarioFimNovaSolicitacao = horarioInicioNovaSolicitacao.plus(solicitacao.getTempo());
-
-                        LocalTime horarioInicioReservaExistente = reserva.getSolicitacao().getHorario();
-                        LocalTime horarioFimReservaExistente = horarioInicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
-
-                        if (horarioFimNovaSolicitacao.isBefore(horarioInicioReservaExistente) ||// se os períodos que duram a reserva não entram em choque
-                                horarioInicioNovaSolicitacao.isAfter(horarioFimReservaExistente)) {
-                            // Não há conflito, pode prosseguir com a nova solicitação
-
-                            permitido = true;
-                        } else {
-                            // Há conflito, a nova solicitação não pode ser agendada
-                             permitido = false;
-                        }
+                    if (fimNovaSolicitacao.isBefore(inicioReservaExistente) ||
+                            inicioNovaSolicitacao.isAfter(fimReservaExistente)) {
+                        // Não há conflito, pode prosseguir com a nova solicitação
+                        permitido = true;
+                    } else {
+                        // Há conflito, a nova solicitação não pode ser agendada
+                        permitido = false;
                     }
                 }
             }
-
-
+        }
         return isPermitido();
     }
 
-
+    public boolean isPermitido() {
+        return permitido;
+    }
 }

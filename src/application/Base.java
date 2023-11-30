@@ -17,15 +17,6 @@ public class Base implements IBase {
     private List<Disciplina> disciplinas;
     private List<Aluno> alunos;
 
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
-    private List<Reserva> reservas;
 
     private final int QTDE_PROFESSORES = 15;
     private final int QTDE_DEPARTAMENTOS = 3;

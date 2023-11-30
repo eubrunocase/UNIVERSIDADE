@@ -14,19 +14,16 @@ public class Solicitacao {                 //ATRIBUTOS
     private Professor professor;
     private Disciplina disciplina;
     private Set<Aluno> alunos;
-    private LocalDate data;
-
-
-    private LocalTime horario;
+    private LocalDateTime dataHora;
     private Duration tempo;
 
-    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Aluno aluno, LocalDate data, Duration tempo) {    //CONSTRUTOR
+    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Set<Aluno> alunos, LocalDateTime dataHora, Duration tempo) {    //CONSTRUTOR
         this.id = id;
         this.laboratorio = laboratorio;
         this.professor = professor;
         this.disciplina = disciplina;
         this.alunos = alunos;
-        this.data = data;
+        this.dataHora = dataHora;
         this.tempo = tempo;
     }
 
@@ -35,13 +32,7 @@ public class Solicitacao {                 //ATRIBUTOS
     }
 
 
-    public LocalTime getHorario() {
-        return horario;
-    }
 
-    public void setHorario(LocalTime horario) {
-        this.horario = horario;
-    }
 
     public Set<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
         return alunos;
@@ -51,12 +42,12 @@ public class Solicitacao {                 //ATRIBUTOS
         this.alunos = alunos;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
     public Disciplina getDisciplina() {
@@ -107,13 +98,13 @@ public class Solicitacao {                 //ATRIBUTOS
     }
 
     public String toString() {                                   // METODO TO STRING
-        return "sSolicitacao{" +
+        return "Solicitacao{" +
                 "id=" + id +
                 ", laboratorio=" + laboratorio +
                 ", professor=" + professor +
                 ", disciplina=" + disciplina +
                 ", alunos=" + alunos +
-                ", data='" + data + '\'' +
+                ", data='" + dataHora + '\'' +
                 ", tempo=" + formatarDuracao(tempo) +
                 '}';
     }
