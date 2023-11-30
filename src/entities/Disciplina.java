@@ -49,10 +49,11 @@ public class Disciplina {                                  // Powered by: BRUNO 
 
     public String toString() {
         return "Disciplina{" +
-                "sigla='" + sigla + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", id=" + id +
-                ", status=" + status +
-                '}';
+                //"sigla='"
+                 sigla   +
+                //", descricao='" + descricao + '\'' +
+                //", id=" + id +
+                //", status=" + status +
+                "}";
     }
 }

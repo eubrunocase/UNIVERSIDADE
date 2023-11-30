@@ -7,51 +7,33 @@ import java.util.List;
 public class ValidarSolicitacao {
     private boolean permitido = true;
 
-
-
-    public Boolean checarConflito(Solicitacao solicitacao, List<Reserva> reservas) {
+    public boolean checarConflito(Solicitacao solicitacao, List<Reserva> reservas) {
         for (Reserva reserva : reservas) {
-            if (solicitacao.getProfessor() == reserva.getSolicitacao().getProfessor()) {
-                if (solicitacao.getDataHora().toLocalDate().equals(reserva.getSolicitacao().getDataHora().toLocalDate())) {
-                    // Se as datas da nova solicitação forem iguais às de uma reserva, verifique os horários
-                    LocalDateTime inicioNovaSolicitacao = solicitacao.getDataHora();
-                    LocalDateTime fimNovaSolicitacao = inicioNovaSolicitacao.plus(solicitacao.getTempo());
-
-                    LocalDateTime inicioReservaExistente = reserva.getSolicitacao().getDataHora();
-                    LocalDateTime fimReservaExistente = inicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
-
-                    if (fimNovaSolicitacao.isBefore(inicioReservaExistente) ||
-                            inicioNovaSolicitacao.isAfter(fimReservaExistente)) {
-                        // Não há conflito, pode prosseguir com a nova solicitação
-                        permitido = true;
-                    } else {
-                        // Há conflito, a nova solicitação não pode ser agendada
-                        permitido = false;
-                    }
-                }
+            if (solicitacao.getProfessor().equals(reserva.getSolicitacao().getProfessor())) {
+                verificarConflito(solicitacao, reserva.getSolicitacao());
             }
 
-            if (solicitacao.getLaboratorio() == reserva.getSolicitacao().getLaboratorio()) {
-                if (solicitacao.getDataHora().toLocalDate().equals(reserva.getSolicitacao().getDataHora().toLocalDate())) {
-                    // Se as datas da nova solicitação forem iguais às de uma reserva, verifique os horários
-                    LocalDateTime inicioNovaSolicitacao = solicitacao.getDataHora();
-                    LocalDateTime fimNovaSolicitacao = inicioNovaSolicitacao.plus(solicitacao.getTempo());
-
-                    LocalDateTime inicioReservaExistente = reserva.getSolicitacao().getDataHora();
-                    LocalDateTime fimReservaExistente = inicioReservaExistente.plus(reserva.getSolicitacao().getTempo());
-
-                    if (fimNovaSolicitacao.isBefore(inicioReservaExistente) ||
-                            inicioNovaSolicitacao.isAfter(fimReservaExistente)) {
-                        // Não há conflito, pode prosseguir com a nova solicitação
-                        permitido = true;
-                    } else {
-                        // Há conflito, a nova solicitação não pode ser agendada
-                        permitido = false;
-                    }
-                }
+            if (solicitacao.getLaboratorio().equals(reserva.getSolicitacao().getLaboratorio())) {
+                verificarConflito(solicitacao, reserva.getSolicitacao());
             }
         }
         return isPermitido();
+    }
+
+    private void verificarConflito(Solicitacao novaSolicitacao, Solicitacao existente) {
+        if (novaSolicitacao.getDataHora().toLocalDate().equals(existente.getDataHora().toLocalDate())) {
+            LocalDateTime inicioNovaSolicitacao = novaSolicitacao.getDataHora();
+            LocalDateTime fimNovaSolicitacao = inicioNovaSolicitacao.plus(novaSolicitacao.getTempo());
+
+            LocalDateTime inicioReservaExistente = existente.getDataHora();
+            LocalDateTime fimReservaExistente = inicioReservaExistente.plus(existente.getTempo());
+
+            if (fimNovaSolicitacao.isBefore(inicioReservaExistente) || inicioNovaSolicitacao.isAfter(fimReservaExistente)) {
+                permitido = true;
+            } else {
+                permitido = false;
+            }
+        }
     }
 
     public boolean isPermitido() {

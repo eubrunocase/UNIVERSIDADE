@@ -65,9 +65,10 @@ public class Professor {                                              // Powered
         return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", status=" + status +
-                ", departamento=" + departamento +
-                ", Disciplina=" + pdisciplinas +
+                ", status=" + status + " "
+              //  ", departamento="
+                   +departamento + " " +
+                 "Disciplinas:"+pdisciplinas +
                 '}';
     }
 }

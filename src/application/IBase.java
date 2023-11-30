@@ -12,4 +12,6 @@ public interface IBase {
     List<Professor> getProfessores();
     List<Disciplina> getDisciplinas();
     List<Aluno> getAlunos(int qtde, int inicio);
+
+    public void BasePrint ();
 }

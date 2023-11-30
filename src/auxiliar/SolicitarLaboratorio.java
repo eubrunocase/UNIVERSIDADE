@@ -50,6 +50,7 @@ public class SolicitarLaboratorio {
         for (Professor professor : professores) {
             if (professor.getNome().equalsIgnoreCase(prof)) {
                 solicitacao.setProfessor(professor);
+                System.out.println(professor);
             }
         }
         //Definindo a disciplina
@@ -70,7 +71,7 @@ public class SolicitarLaboratorio {
         Set<Aluno> turma = new HashSet<Aluno>(alunos);
         System.out.println(turma);
         solicitacao.setAlunos(turma);
-
+        System.out.println();
 
         // Solicitar data e hora ao mesmo tempo
         System.out.print("Informe a data e horário (dd/MM/yy HH:mm) do uso do laboratório: ");
