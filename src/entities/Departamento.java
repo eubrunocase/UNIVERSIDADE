@@ -52,10 +52,11 @@ public class Departamento {                                              // Powe
 
     public String toString() {
         return "Departamento{" +
-                "id=" + id +
-                ", sigla='" + sigla + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", status=" + status +
+              //  "id=" + id +
+                //", sigla='" + sigla + '\'' +
+                //", descricao='"
+                     descricao + '\'' +
+                //", status=" + status +
                 '}';
     }
 }

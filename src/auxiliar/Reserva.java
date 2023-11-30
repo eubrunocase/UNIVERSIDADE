@@ -26,6 +26,7 @@ public class Reserva implements IReserva {                                      
     public Reserva(Solicitacao solicitacao, Boolean valido,LocalDateTime diaHora, Duration duracao, Professor professor, Disciplina disciplina, LocalDateTime dataLiberacao) {
 
         this.id = solicitacao.getId();
+        this.solicitacao = solicitacao;
         if (valido) {
             this.situacaoReserva = SituacaoReserva.APROVADA;
         } else {
@@ -40,7 +41,9 @@ public class Reserva implements IReserva {                                      
 
     @Override
     public void Efetivar(Reserva reserva, List<Reserva> listaReservas) {
-        listaReservas.add(reserva);
+        if (reserva.situacaoReserva == SituacaoReserva.APROVADA) {
+            listaReservas.add(reserva);
+        }
     }
 
 
@@ -94,8 +97,8 @@ public class Reserva implements IReserva {                                      
     public String toString() {
         return "Reserva{" +
                 "id=" + id +
-                ", solicitacao=" + solicitacao +
                 ", situacao=" + situacaoReserva +
+                ", solicitacao=" + solicitacao +
                 ", diaDaReserva='" + diaHoraReserva + '\'' +
                 ", duracao=" + duracao +
                 '}';

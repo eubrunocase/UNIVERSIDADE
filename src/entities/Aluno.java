@@ -50,11 +50,11 @@ public class Aluno {
 
 
     public String toString() {
-        return "Entities.Aluno{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", matricula=" + matricula +
-                ", status=" + status +
+        return "Aluno{" +
+                //"id=" + id +
+                " nome='" + nome + '\'' +
+                //", matricula=" + matricula +
+                //", status=" + status +
                 '}';
     }
 }
