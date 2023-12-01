@@ -35,7 +35,7 @@ public class SolicitarLaboratorio {
     public Solicitacao solicitarLab() throws ParseException {
         Solicitacao solicitacao = new Solicitacao();
         //Definindo o laboratorio
-        System.out.print("Informe qual laboratório deseja reservar:");
+        System.out.print("Informe qual laboratório deseja reservar (ex: lami1):");
         String lami = scanner.next();
 
        for (Laboratorio lab : laboratorios) {
@@ -45,7 +45,7 @@ public class SolicitarLaboratorio {
        }
 
         //Definindo o professor
-        System.out.println("Informe o nome do professor responsável:");
+        System.out.println("Informe o nome do professor responsável (ex: professor1) :");
         String prof = scanner.next();
         for (Professor professor : professores) {
             if (professor.getNome().equalsIgnoreCase(prof)) {
@@ -54,7 +54,7 @@ public class SolicitarLaboratorio {
             }
         }
         //Definindo a disciplina
-        System.out.println("Informe a sigla da disciplina:");
+        System.out.println("Informe a sigla da disciplina (ex: bes005):");
         String sigla = scanner.next();
         for (Disciplina dis : solicitacao.getProfessor().getPdisciplinas()) {
             if (dis.getSigla().equalsIgnoreCase(sigla)) {

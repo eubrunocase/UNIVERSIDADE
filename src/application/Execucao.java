@@ -2,7 +2,6 @@ package application;
 
 import auxiliar.*;
 import entities.*;
-
 import java.time.*;
 import java.util.*;
 import java.text.ParseException;
@@ -26,6 +25,8 @@ public class Execucao {
         String answer;
         Reservas reservas = new Reservas();
         List<Reserva> listaReservas = reservas.getListaReservas();
+        List<Reserva> listaAprovadas = reservas.getListaAprovadas();
+        int reservaID = 0;
         do {
             System.out.println("Para solicitar um laboratório digite 1");
             System.out.println("Para exibir a base de dados da universidade digite 2");
@@ -40,12 +41,14 @@ public class Execucao {
                 if (res1.equalsIgnoreCase("sim")) {
 
                     ValidarSolicitacao validacao = new ValidarSolicitacao();
-                    boolean aprovacao = validacao.checarConflito(solicitacao, listaReservas);
+                    boolean aprovacao = validacao.checarConflito(solicitacao, listaAprovadas);
                     LocalDate hoje = LocalDate.now();
                     LocalDateTime hojeAgora = hoje.atTime(LocalTime.now());
                     Reserva novaReserva = new Reserva(solicitacao, aprovacao, solicitacao.getDataHora(), solicitacao.getTempo(), solicitacao.getProfessor(), solicitacao.getDisciplina(), hojeAgora);
-                    novaReserva.Efetivar(novaReserva, listaReservas);
+                    novaReserva.setId(reservaID);
+                    novaReserva.Efetivar(novaReserva, listaReservas, listaAprovadas);
                     System.out.println(listaReservas);
+                    reservaID ++;
                 } else {
                     System.out.println("Atendimento finalizado");
                 }
@@ -58,7 +61,7 @@ public class Execucao {
             }
 
             System.out.println("Deseja realizar uma nova solicitação e reserva? (sim/nao)");
-             answer = ler.next();
+            answer = ler.next();
 
         } while (answer.equalsIgnoreCase("sim"));
 

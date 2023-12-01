@@ -40,10 +40,14 @@ public class Reserva implements IReserva {                                      
     }
 
     @Override
-    public void Efetivar(Reserva reserva, List<Reserva> listaReservas) {
+    public void Efetivar(Reserva reserva, List<Reserva> listaReservas, List<Reserva> listaAprovadas) {
+
         if (reserva.situacaoReserva == SituacaoReserva.APROVADA) {
+            listaAprovadas.add(reserva);
             listaReservas.add(reserva);
         }
+        listaReservas.add(reserva);
+
     }
 
 
