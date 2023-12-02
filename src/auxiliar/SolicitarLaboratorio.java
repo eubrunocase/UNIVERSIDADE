@@ -9,6 +9,7 @@
  */
 package auxiliar;
 
+
 import application.Base;
 import entities.*;
 import java.text.ParseException;
@@ -19,7 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
+
 public class SolicitarLaboratorio {
+
 
     private Scanner scanner;
     private List<Laboratorio> laboratorios;
@@ -43,6 +46,7 @@ public class SolicitarLaboratorio {
         this.disciplinas = disciplinas;
         this.departamentos = departamentos;
         this.professores = professores;
+
     }
 
     /**
@@ -124,4 +128,5 @@ public class SolicitarLaboratorio {
         System.out.println(solicitacao);
         return solicitacao;
     }
+
 }

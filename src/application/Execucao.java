@@ -15,7 +15,10 @@ import java.time.*;
 import java.util.*;
 import java.text.ParseException;
 
+
+
 public class Execucao {
+
 
     /**
      * Método principal que inicia a execução do sistema de reserva de laboratórios.
@@ -68,6 +71,7 @@ public class Execucao {
                 } else {
                     System.out.println();
                 }
+
 
             } else if (resposta == 2) {
                 System.out.println("Base de dados da UCSAL: ");

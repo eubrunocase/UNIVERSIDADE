@@ -88,12 +88,14 @@ public class Laboratorio {
         this.id = id;
     }
 
+
     /**
      * Verifica se o laboratório está ativo.
      *
      * @return True se estiver ativo, false se estiver inativo.
      */
     public boolean isStatus() {
+
         return status;
     }
 

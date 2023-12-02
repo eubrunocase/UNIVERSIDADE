@@ -8,12 +8,14 @@
  */
 package entities;
 
+
 /**
  * Classe que representa uma disciplina.
  */
 public class Disciplina {
 
     // Atributos
+
     private String sigla;
     private String descricao;
     private long id;

@@ -15,11 +15,13 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 /**
  * A classe `Reserva` representa uma reserva de laboratório no sistema de reserva da Ucsal.
  * Implementa a interface `IReserva` para definir o contrato de efetivação de reservas.
  */
 public class Reserva implements IReserva {
+
     private int id;
     private Solicitacao solicitacao;
     private SituacaoReserva situacaoReserva;
