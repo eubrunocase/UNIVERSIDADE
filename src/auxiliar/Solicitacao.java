@@ -1,14 +1,26 @@
+/**
+ * A classe `Solicitacao` representa uma solicitação de reserva de laboratório no sistema da Ucsal.
+ * Contém informações sobre o laboratório desejado, professor responsável, disciplina associada,
+ * alunos envolvidos, data e hora da solicitação e a duração desejada.
+ *
+ *
+ * @author BRUNO CASÉ and ZAIRA DUTRA
+ * @version 1.0
+ * @since 21/11/2023
+ */
 package auxiliar;
 
 import entities.*;
 
 import java.time.*;
-import java.time.temporal.TemporalAmount;
 import java.util.Set;
 
-// Powered by: BRUNO CASÉ and ZAIRA DUTRA
-//Last att: 12:58 pm  (21/11/2023)
-public class Solicitacao {                 //ATRIBUTOS
+/**
+ * Classe que representa uma solicitação de reserva de laboratório.
+ */
+public class Solicitacao {
+
+    // Atributos
     private int id;
     private Laboratorio laboratorio;
     private Professor professor;
@@ -17,7 +29,19 @@ public class Solicitacao {                 //ATRIBUTOS
     private LocalDateTime dataHora;
     private Duration tempo;
 
-    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina, Set<Aluno> alunos, LocalDateTime dataHora, Duration tempo) {    //CONSTRUTOR
+    /**
+     * Construtor da classe `Solicitacao`.
+     *
+     * @param id           O identificador único da solicitação.
+     * @param laboratorio  O laboratório desejado para a reserva.
+     * @param professor    O professor responsável pela solicitação.
+     * @param disciplina   A disciplina associada à solicitação.
+     * @param alunos       O conjunto de alunos envolvidos na solicitação.
+     * @param dataHora     A data e hora da solicitação.
+     * @param tempo        A duração desejada para a reserva.
+     */
+    public Solicitacao(int id, Laboratorio laboratorio, Professor professor, Disciplina disciplina,
+                       Set<Aluno> alunos, LocalDateTime dataHora, Duration tempo) {
         this.id = id;
         this.laboratorio = laboratorio;
         this.professor = professor;
@@ -27,14 +51,15 @@ public class Solicitacao {                 //ATRIBUTOS
         this.tempo = tempo;
     }
 
-    public Solicitacao(){
-
+    /**
+     * Construtor vazio da classe `Solicitacao`.
+     */
+    public Solicitacao() {
     }
 
+    // Métodos Acessores
 
-
-
-    public Set<Aluno> getAlunos(int capacidade) {                                //METODOS ACESSORES
+    public Set<Aluno> getAlunos() {
         return alunos;
     }
 
@@ -97,7 +122,13 @@ public class Solicitacao {                 //ATRIBUTOS
         return String.format("%d horas e %d minutos", horas, minutos);
     }
 
-    public String toString() {                                   // METODO TO STRING
+    /**
+     * Representação textual da solicitação.
+     *
+     * @return Uma string representando a solicitação.
+     */
+    @Override
+    public String toString() {
         return "Solicitacao{" +
                 "id=" + id +
                 ", laboratorio=" + laboratorio +
